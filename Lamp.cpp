@@ -53,7 +53,7 @@ float angleb1=0.f;
 float angleLampBase=0.f;
 float angleLampBase1=0.f;
 float angleLamp=0.f;
-bool lockCamera=false;
+bool lockCamera=true;
 bool bWireframe=false;
 bool bLighting=false;
 void keyboard (unsigned char key, int x, int y);
@@ -112,80 +112,87 @@ void display(void){
 
 	drawAxes();
 
+	// for(int i = 0; i < 10; i++){
+	// 	for(int j = 0; j < 10; j++){
+	// 		drawCube(vector3(i,j,0),vector4(0,0,0,0), vector3(1,1,1));
+	// 	}	
+	// }
 	
 	//Plane
-	glColor3f(0.03,0.03,0.03);
-	drawCube(vector3(0,0,0), vector4(0,0,0,0), vector3(10,0.1,10));
+	// glColor3f(0.03,0.03,0.03);
+	// drawCube(vector3(0,0,0), vector4(0,0,0,0), vector3(10,0.1,10));
 
 	
-	glPushMatrix();
-		glRotatef(angleLampBase, 0,1,0);
-		glRotatef(angleb1, 0,0,1);
-	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
-		glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
-		glLightfv(GL_LIGHT0, GL_POSITION, light_position);
-		glEnable(GL_LIGHT0);
+	// glPushMatrix();
+	// 	glRotatef(angleLampBase, 0,1,0);
+	// 	glRotatef(angleb1, 0,0,1);
+	// glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+	// 	glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
+	// 	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+	// 	glEnable(GL_LIGHT0);
 		
 		
-		//LampBase=Sphere
-		glColor3f(0.5,0.1,0);
-		drawSphere(vector3(0,-0.5,0), vector4(0,0,0,0),vector3(1,1,1));
+	// 	//LampBase=Sphere
+	// 	glColor3f(0.5,0.1,0);
+	// 	drawSphere(vector3(0,-0.5,0), vector4(0,0,0,0),vector3(1,1,1));
 
-		//Base1
-		glColor3f(0,0.0,0.4);
-		drawSphere(vector3(0,0.5,0), vector4(0,0,0,1), vector3(0.3,0.3*10,0.3));
+	// 	//Base1
+	// 	glColor3f(0,0.0,0.4);
+	// 	drawSphere(vector3(0,0.5,0), vector4(0,0,0,1), vector3(0.3,0.3*10,0.3));
 
-		//RotatorSphere1
-		glColor3f(0.4,0.0,0.1);
-		drawSphere(vector3(0,6.5,0), vector4(0,0,0,1), vector3(0.3,0.3,0.3));
+	// 	//RotatorSphere1
+	// 	glColor3f(0.4,0.0,0.1);
+	// 	drawSphere(vector3(0,6.5,0), vector4(0,0,0,1), vector3(0.3,0.3,0.3));
 
-		glPushMatrix();
-			glTranslatef(0,+6.5,0);//move back where you were
-			glRotatef(angleLampBase1,0,0,1);//rotate
-			glTranslatef(0,-6.5,0);//move to origin
+	// 	glPushMatrix();
+	// 		glTranslatef(0,+6.5,0);//move back where you were
+	// 		glRotatef(angleLampBase1,0,0,1);//rotate
+	// 		glTranslatef(0,-6.5,0);//move to origin
 			
-			//Base2
-			glColor3f(0,0.0,0.6);
-			drawSphere(vector3(0,6.5,0), vector4(0,0,0,1), vector3(0.3,0.3*10,0.3));
+	// 		//Base2
+	// 		glColor3f(0,0.0,0.6);
+	// 		drawSphere(vector3(0,6.5,0), vector4(0,0,0,1), vector3(0.3,0.3*10,0.3));
 
-			//RotatorSphere2
-			glColor3f(0.4,0.0,0.1);
-			drawSphere(vector3(0,6.25*2,0), vector4(0,0,0,1), vector3(0.3,0.3,0.3));
+	// 		//RotatorSphere2
+	// 		glColor3f(0.4,0.0,0.1);
+	// 		drawSphere(vector3(0,6.25*2,0), vector4(0,0,0,1), vector3(0.3,0.3,0.3));
 
 
-			glPushMatrix();
-				glTranslatef(0,6.2*2,0);
-				glRotatef(angleLamp,0,0,1);
-				glTranslatef(0,-6.2*2,0);
+	// 		glPushMatrix();
+	// 			glTranslatef(0,6.2*2,0);
+	// 			glRotatef(angleLamp,0,0,1);
+	// 			glTranslatef(0,-6.2*2,0);
 				
-				//Arm
-				glColor3f(0,0.0,0.8);
-				drawSphere(vector3(0,6.5*2,0), vector4(0,0,0,1), vector3(0.3,0.3*4,0.3));
-				// drawSphere(vector3(3,0,0), vector4(0,0,0,1), vector3(0.3,0.3*4,0.3));
-				//Cone
-				glColor3f(0.7,0.3,0.0);
-				drawCone(vector3(0,6.5*2+0.3*4,0), vector4(0,0,0,1), vector3(1,1,1));
+	// 			//Arm
+	// 			glColor3f(0,0.0,0.8);
+	// 			drawSphere(vector3(0,6.5*2,0), vector4(0,0,0,1), vector3(0.3,0.3*4,0.3));
+	// 			// drawSphere(vector3(3,0,0), vector4(0,0,0,1), vector3(0.3,0.3*4,0.3));
+	// 			//Cone
+	// 			glColor3f(0.7,0.3,0.0);
+	// 			drawCone(vector3(0,6.5*2+0.3*4,0), vector4(0,0,0,1), vector3(1,1,1));
 				
-				// glTranslatef(1,0,0);
+	// 			// glTranslatef(1,0,0);
 				
-				glLightfv(GL_LIGHT0, GL_POSITION, light_position);
-				drawCube(vector3( 0,0,0),vector4(0,0,0,0), vector3(1,1,1));
-				// glTranslatef(-1,0,0);
+	// 			glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+	// 			drawCube(vector3( 0,0,0),vector4(0,0,0,0), vector3(1,1,1));
+	// 			// glTranslatef(-1,0,0);
 
-			glPopMatrix();
-		glPopMatrix();
+	// 		glPopMatrix();
+	// 	glPopMatrix();
 
-	glPopMatrix();
+	// glPopMatrix();
 	
-	RenderString(5.0f, 7.0f, GLUT_BITMAP_TIMES_ROMAN_24, "press:", vector3(1.0f, 1.0f, 1.0f));
-	RenderString(5.0f, 7-2.0f, GLUT_BITMAP_TIMES_ROMAN_24, "z for wireframe toggle", vector3(1.0f, 0.0f, 0.0f));
-	RenderString(5.0f, 7-4.0f, GLUT_BITMAP_TIMES_ROMAN_24, "c for cam lock to 0,0,0", vector3(1.0f, 0.0f, 0.0f));
-	RenderString(5.0f, 7-6.0f, GLUT_BITMAP_TIMES_ROMAN_24, "l for light toggle", vector3(1.0f, 0.0f, 0.0f));
-	RenderString(-10.0f, 9-2.0f, GLUT_BITMAP_TIMES_ROMAN_24, "r/R for base rotate", vector3(1.0f, 0.0f, 0.0f));
-	RenderString(-10.0f, 9-4.0f, GLUT_BITMAP_TIMES_ROMAN_24, "t/T for leg rotate", vector3(1.0f, 0.0f, 0.0f));
-	RenderString(-10.0f, 9-6.0f, GLUT_BITMAP_TIMES_ROMAN_24, "y/Y for arm rotate", vector3(1.0f, 0.0f, 0.0f));
-	RenderString(-10.0f, 9-8.0f, GLUT_BITMAP_TIMES_ROMAN_24, "u/U for lamp rotate", vector3(1.0f, 0.0f, 0.0f));
+	// RenderString(5.0f, 7.0f, GLUT_BITMAP_TIMES_ROMAN_24, "press:", vector3(1.0f, 1.0f, 1.0f));
+	// RenderString(5.0f, 7-2.0f, GLUT_BITMAP_TIMES_ROMAN_24, "z for wireframe toggle", vector3(1.0f, 0.0f, 0.0f));
+	// RenderString(5.0f, 7-4.0f, GLUT_BITMAP_TIMES_ROMAN_24, "c for cam lock to 0,0,0", vector3(1.0f, 0.0f, 0.0f));
+	// RenderString(5.0f, 7-6.0f, GLUT_BITMAP_TIMES_ROMAN_24, "l for light toggle", vector3(1.0f, 0.0f, 0.0f));
+	// RenderString(-10.0f, 9-2.0f, GLUT_BITMAP_TIMES_ROMAN_24, "r/R for base rotate", vector3(1.0f, 0.0f, 0.0f));
+	// RenderString(-10.0f, 9-4.0f, GLUT_BITMAP_TIMES_ROMAN_24, "t/T for leg rotate", vector3(1.0f, 0.0f, 0.0f));
+	// RenderString(-10.0f, 9-6.0f, GLUT_BITMAP_TIMES_ROMAN_24, "y/Y for arm rotate", vector3(1.0f, 0.0f, 0.0f));
+	// RenderString(-10.0f, 9-8.0f, GLUT_BITMAP_TIMES_ROMAN_24, "u/U for lamp rotate", vector3(1.0f, 0.0f, 0.0f));
 	
+	drawCube(vector3(0,0,0),vector4(0,0,0,0),vector3(1,1,1));
+
 	glFlush();
 	glutPostRedisplay();
 
@@ -229,12 +236,14 @@ void keyboard (unsigned char key, int x, int y){
 	switch (key) {
 		case 'c':
 			lockCamera=!lockCamera;
+			std::cout<<"pressed c"<<std::endl;
 			break;
 		case 'z':
 			bWireframe=!bWireframe;
 			break;
 		case 'l':
 			bLighting=!bLighting;
+			std::cout<<"pressed l"<<std::endl;
 			break;
 		case 'a':
 			right-=1.f;
