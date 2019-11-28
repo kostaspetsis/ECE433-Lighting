@@ -3,6 +3,7 @@
 static double yVal=1.0;
 //global
 float m_rotZ;
+float m_tess;
 int spot(double a, double b, double c, double d, double e, double f){
     /*
     a, b and c -- x, y and z co-ordinates for light position
@@ -81,6 +82,7 @@ void keyboard(unsigned char key, int x, int y){
 }
 int main(int argc, char** argv){
     m_rotZ=0;
+    m_tess=4;
     glutInit(&argc, argv);
     glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
     glutInitWindowSize (800, 600);
@@ -89,7 +91,7 @@ int main(int argc, char** argv){
     init ();
     lighting lighting;
     // lighting.OnStart();
-    glutDisplayFunc(lighting.OnUpdate);
+    glutDisplayFunc(lighting.OnUpdate3);
     glutKeyboardFunc(keyboard);
     glutMainLoop();
     return 0;
