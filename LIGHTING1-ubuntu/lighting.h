@@ -7,7 +7,8 @@
 // See Lighting.cpp for the implementation of this class
 //
 #include <GL/freeglut.h>
-
+#include <unistd.h>
+extern float m_rotZ;
 class lighting
 {
 public:
@@ -17,6 +18,7 @@ public:
 	float m_accelZ;
 	float m_rotY;
 	float m_rotX;
+	
 	float m_tess;
 	
 // Overrides

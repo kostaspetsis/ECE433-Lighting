@@ -35,7 +35,7 @@ lighting::lighting()
 	m_rotY = 35.0;
 	m_rotX = 25.0f;
 	m_tess=4;
-
+	
 	
 
 }
@@ -63,6 +63,7 @@ void lighting::OnStart()
 	gluPerspective(fov,1.0,0.1,1000.0);//fov=60.0, aspect_ratio=1.0,z near=1.5, z far = 2.0
 	glMatrixMode(GL_MODELVIEW);
 	
+
 	// TODO: Add your specialized code here and/or call the base class
 
 	// Set the the material properties
@@ -113,11 +114,15 @@ void lighting::OnUpdate(  )
 	glColor3f(1.0, 1.0, 1.0);
 	glLoadIdentity();  /*clear the matrix */
 
+glTranslatef(0,0,-10);
 	//Use Color Material to simplify Text Setup
 	// ::glEnable(GL_COLOR_MATERIAL);
 	// ::glEnable(GL_NORMALIZE);
 	::glColor3f( 0.8f, 0.8f, 0.2f ); // yellow text
 
+
+glRotatef(m_rotZ,0,1,1);
+m_rotZ+=1;
 	// along the X axis
 	::glPushMatrix();
 	::glTranslatef( -1.5f, 2.0f, -1.5f );
@@ -166,7 +171,10 @@ void lighting::OnUpdate(  )
 			}
 		}
 	::glPopMatrix();
-
+	::glFlush();
+	usleep(10000);
+	glutSwapBuffers();
+	// glutPostRedisplay();
 	gluDeleteQuadric(sphere);
 	
 }

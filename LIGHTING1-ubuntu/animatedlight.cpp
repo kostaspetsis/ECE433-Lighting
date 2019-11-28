@@ -1,6 +1,8 @@
 #include <GL/glut.h>
 #include "lighting.h"
 static double yVal=1.0;
+//global
+float m_rotZ;
 int spot(double a, double b, double c, double d, double e, double f){
     /*
     a, b and c -- x, y and z co-ordinates for light position
@@ -78,9 +80,10 @@ void keyboard(unsigned char key, int x, int y){
     }
 }
 int main(int argc, char** argv){
+    m_rotZ=0;
     glutInit(&argc, argv);
     glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowSize (600, 600);
+    glutInitWindowSize (800, 600);
     glutInitWindowPosition (100, 100);
     glutCreateWindow ("Spot Light - Programming Techniques");
     init ();
